@@ -1,3 +1,13 @@
-import Streamlit as st
-st.page_link("your_app.py", label="Home", icon="🏠")
-st.title(" Blue[#Tag Trending] :sunglasses:")
+import streamlit as st
+st.markdown(
+    """
+    <style>
+    [data-testid="stSidebar"] {
+        display: none;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+st.title("Posts")
+st.page_link("SMedia.py", label="Home", icon="🏠")
