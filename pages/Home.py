@@ -18,3 +18,5 @@ st.markdown(
 st.title("Social Media Hashtag Trend Analyser")
 st.page_link("SMedia.py", label="Home", icon="🏠")
 post= st.text_area("Enter your post here","",placeholder="#Tag1 #Tag2 #Tag3 , Post")
+if st.button("Post"):
+    st.write("Your post has been submitted!")
