@@ -1,4 +1,5 @@
 import streamlit as st
+import requests
 st.set_page_config(
     page_title="Social Media Hashtag Trend Analyser",
     page_icon=":hash:",
@@ -17,6 +18,20 @@ st.markdown(
 )
 st.title("Social Media Hashtag Trend Analyser")
 st.page_link("SMedia.py", label="Home", icon="🏠")
-post= st.text_area("Enter your post here","",placeholder="#Tag1 #Tag2 #Tag3 , Post")
+post_text= st.text_area("Enter your post here","",placeholder="#Tag1 #Tag2 #Tag3 , Post")
 if st.button("Post"):
-    st.write("Your post has been submitted!")
+    post_content(post_text)
+    
+# Function to submit a post to the API
+    def post_content(post_text):
+        url = "https://example.com/api/posts"  # Replace with your API endpoint
+        payload = {"content": post_text}
+        headers = {"Content-Type": "application/json"}
+        
+        response = requests.post(url, json=payload, headers=headers)
+        
+        if response.status_code == 201:
+            st.success("Post successfully submitted!")
+        else:
+            st.error("Failed to submit post. Please try again.")
+
