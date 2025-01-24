@@ -1,4 +1,6 @@
 import streamlit as st
+import requests
+
 st.markdown(
     """
     <style>
@@ -22,9 +24,22 @@ def fetch_posts():
     except requests.exceptions.RequestException as e:
         st.error(f"Error fetching posts: {e}")
         return []
-# Display posts 
+    
+# Function to display posts
+def display_posts(posts):
+    if posts:
+        st.subheader("Posts")
+        for post in posts:
+            st.write(f"{post['post_content']}")
+            #st.write(f"Description: {post['description']}")
+            st.write("-----")
+    else:
+        st.write("No posts available at the moment.")
+
+# Fetch and display posts
 posts = fetch_posts()
-if posts:
-    st.write(posts)
-else:
-    st.write("No posts available at the moment.")
+content = posts['body']
+#st.write(content)
+
+#st.write(posts)
+display_posts(content)

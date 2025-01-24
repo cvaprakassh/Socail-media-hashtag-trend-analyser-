@@ -28,24 +28,3 @@ with col3:
 #st.page_link("pages/Trending.py", label="# Tag Trending", icon="🔥")
 #st.page_link("pages/Post.py", label="Post", icon="📝")
 #st.page_link("http://www.google.com", label="Google", icon="🌎")
-
-# Function to fetch trending hashtags from an API
-def fetch_trending_hashtags():
-    url = "https://go07cpukrh.execute-api.ap-south-1.amazonaws.com/Post-Stage"
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.RequestException as e:
-        st.error(f"Error fetching trending hashtags: {e}")
-        return []
-
-# Display trending hashtags
-trending_hashtags = fetch_trending_hashtags()
-if trending_hashtags:
-    st.subheader("Trending Hashtags")
-    st.write(trending_hashtags) 
-    for hashtag in trending_hashtags:
-        st.write(f"#{hashtag}")
-else:
-    st.write("No trending hashtags available at the moment.")
