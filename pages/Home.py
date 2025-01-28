@@ -83,10 +83,10 @@ def post_info(post_text):
 
 post_cont= st.text_area("Enter your post here","",placeholder="#Tag1 #Tag2 #Tag3 , Post")
 post_tags = re.findall(r"#(\w+)", post_cont)  # Extract hashtags from post content
-post_desc = re.sub(r"#(\w+)", "", post_cont).strip()  # Extract post description
+#post_desc = re.sub(r"#(\w+)", "", post_cont).strip()  # Extract post description
 post_id = get_next_id() # Get the next post ID
 #st.write(type(post_id))
-post_text=json.dumps({"postid":post_id,"post_content": post_desc, "tags": post_tags}) # Create a JSON object 
+post_text=json.dumps({"postid":post_id,"post_content": post_cont, "tags": post_tags}) # Create a JSON object 
 #st.write(post_text)
 if st.button("Post"):
     post_info(post_text)
