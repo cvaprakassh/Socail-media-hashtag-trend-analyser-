@@ -28,7 +28,7 @@ def fetch_posts():
 # Function to display posts
 def display_posts(posts):
     if posts:
-        st.subheader("Posts")
+        st.subheader("Latests Posts")
         posts = sorted(posts, key=lambda x: x['postid'], reverse=True)
 
 
