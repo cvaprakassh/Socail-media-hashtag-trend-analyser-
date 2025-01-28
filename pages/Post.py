@@ -29,6 +29,14 @@ def fetch_posts():
 def display_posts(posts):
     if posts:
         st.subheader("Posts")
+        posts = sorted(posts, key=lambda x: x['postid'], reverse=True)
+
+
+        #post_id = st.selectbox("Select Post ID", [post['postid'] for post in posts])
+        #selected_post = next((post for post in posts if post['postid'] == post_id), None)
+        #if selected_post:
+         #   st.write(f"Post ID: {selected_post['postid']}")
+          #  st.write(f"Content: {selected_post['post_content']}")
         for post in posts:
             st.write(f"{post['post_content']}")
             #st.write(f"Description: {post['description']}")
