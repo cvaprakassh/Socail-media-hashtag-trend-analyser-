@@ -135,13 +135,18 @@ def clear_text():
  #   st.experimental_rerun()
   #  st.button("Refresh", on_click=refresh_page)
 
-if st.button("Post"):
-    post_info(post_text)
+col7, col6 = st.columns([2, 1])
+with col7:
+    if st.button("Post"):
+        post_info(post_text)
+        st.session_state.text_value = " "
 
+col4, col5 = st.columns([9, 1])
+with col5:
+    if st.button("Clear"):
+        st.session_state.button_clicked = True  # Change session state to trigger rerun
+        clear_text()
 
-if st.button("Refresh"):
-    st.session_state.button_clicked = True  # Change session state to trigger rerun
-    clear_text()
 
 
 if st.session_state.button_clicked:
